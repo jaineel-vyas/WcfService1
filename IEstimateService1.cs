@@ -41,7 +41,7 @@ namespace WcfService1
         [WebInvoke(Method = "POST",
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json,
-        UriTemplate = "/AddNewEstimate")]
+        UriTemplate = "/AddNewEstimate/")]
         bool AddNewEstimate(AddEstimateDataContract estimate);
 
          // Contract to add scheduling
@@ -49,7 +49,7 @@ namespace WcfService1
         [WebInvoke(Method = "POST",
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json,
-        UriTemplate = "/AddScheduling")]
+        UriTemplate = "/AddScheduling/")]
         bool AddScheduling(ScheduleDataContract Schedule);
     }
 }
