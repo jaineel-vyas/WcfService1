@@ -12,6 +12,7 @@ namespace WcfService1
     [ServiceContract]
     public interface IEstimateService1
     {
+        // Contract to getting client data
         [OperationContract]
         [WebInvoke(Method = "GET",
         RequestFormat = WebMessageFormat.Json,
@@ -19,7 +20,7 @@ namespace WcfService1
         UriTemplate = "/GetClientMaster/")]
         List<ClientMasterContract> GetClientMaster();
     
-
+        // Contract to getting brand data
     [OperationContract]
         [WebInvoke(Method = "GET",
         RequestFormat = WebMessageFormat.Json,
@@ -27,14 +28,15 @@ namespace WcfService1
         UriTemplate = "/GetBrandMaster/")]
         List<BrandMasterContract> GetBrandMaster();
     
-    
+         // Contract to get estimates data
     [OperationContract]
         [WebInvoke(Method = "GET",
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "/GetAllEstimate/")]
         List<AddEstimateDataContract> GetAllEstimate();
-   
+
+        // Contract to add new estimate
     [OperationContract]
         [WebInvoke(Method = "POST",
         RequestFormat = WebMessageFormat.Json,
@@ -42,5 +44,12 @@ namespace WcfService1
         UriTemplate = "/AddNewEstimate")]
         bool AddNewEstimate(AddEstimateDataContract estimate);
 
+         // Contract to add scheduling
+    [OperationContract]
+        [WebInvoke(Method = "POST",
+        RequestFormat = WebMessageFormat.Json,
+        ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "/AddScheduling")]
+        bool AddScheduling(ScheduleDataContract Schedule);
     }
 }
