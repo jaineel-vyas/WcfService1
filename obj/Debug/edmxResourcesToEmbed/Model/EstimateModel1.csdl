@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Jaineelsql2012Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Jaineelsql2012Entities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="BrandMasters" EntityType="Jaineelsql2012Model.BrandMaster" />
+    <EntitySet Name="CaptionMasters" EntityType="Jaineelsql2012Model.CaptionMaster" />
+    <EntitySet Name="ClientMasters" EntityType="Jaineelsql2012Model.ClientMaster" />
+    <EntitySet Name="EstimateEditions" EntityType="Jaineelsql2012Model.EstimateEdition" />
+    <EntitySet Name="EstimateHeaders" EntityType="Jaineelsql2012Model.EstimateHeader" />
+    <EntitySet Name="EstimatePublications" EntityType="Jaineelsql2012Model.EstimatePublication" />
+    <EntitySet Name="EstimateScheduleds" EntityType="Jaineelsql2012Model.EstimateScheduled" />
+    <AssociationSet Name="FK_Brand_Master_Client_Master" Association="Jaineelsql2012Model.FK_Brand_Master_Client_Master">
+      <End Role="ClientMaster" EntitySet="ClientMasters" />
+      <End Role="BrandMaster" EntitySet="BrandMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Caption_Master_Brand_Master" Association="Jaineelsql2012Model.FK_Caption_Master_Brand_Master">
+      <End Role="BrandMaster" EntitySet="BrandMasters" />
+      <End Role="CaptionMaster" EntitySet="CaptionMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estimate_Edition_Estimate_Header" Association="Jaineelsql2012Model.FK_Estimate_Edition_Estimate_Header">
+      <End Role="EstimateHeader" EntitySet="EstimateHeaders" />
+      <End Role="EstimateEdition" EntitySet="EstimateEditions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estimate_Publication_Estimate_Header" Association="Jaineelsql2012Model.FK_Estimate_Publication_Estimate_Header">
+      <End Role="EstimateHeader" EntitySet="EstimateHeaders" />
+      <End Role="EstimatePublication" EntitySet="EstimatePublications" />
+    </AssociationSet>
+    <FunctionImport Name="sp_CreateEstimateProc">
+      <Parameter Name="Estimateno" Mode="In" Type="String" />
+      <Parameter Name="Estimatedate" Mode="In" Type="DateTime" />
+      <Parameter Name="CampaignName" Mode="In" Type="String" />
+      <Parameter Name="AgencyName" Mode="In" Type="String" />
+      <Parameter Name="PeriodFrom" Mode="In" Type="DateTime" />
+      <Parameter Name="PeriodTo" Mode="In" Type="DateTime" />
+      <Parameter Name="Clientid" Mode="In" Type="Int32" />
+      <Parameter Name="Brandid" Mode="In" Type="Int32" />
+      <Parameter Name="pono" Mode="In" Type="String" />
+      <Parameter Name="sacper" Mode="In" Type="Decimal" />
+      <Parameter Name="aacper" Mode="In" Type="Decimal" />
+      <Parameter Name="podate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetBrandMaster" />
+    <FunctionImport Name="sp_GetClientMaster" />
+  </EntityContainer>
+  <EntityType Name="BrandMaster">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="Int32" Nullable="false" />
+    <Property Name="Brand_Name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ClientMaster" Relationship="Jaineelsql2012Model.FK_Brand_Master_Client_Master" FromRole="BrandMaster" ToRole="ClientMaster" />
+    <NavigationProperty Name="CaptionMasters" Relationship="Jaineelsql2012Model.FK_Caption_Master_Brand_Master" FromRole="BrandMaster" ToRole="CaptionMaster" />
+  </EntityType>
+  <EntityType Name="CaptionMaster">
+    <Key>
+      <PropertyRef Name="CaptionID" />
+    </Key>
+    <Property Name="CaptionID" Type="Int32" Nullable="false" />
+    <Property Name="Caption" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="BrandID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BrandMaster" Relationship="Jaineelsql2012Model.FK_Caption_Master_Brand_Master" FromRole="CaptionMaster" ToRole="BrandMaster" />
+  </EntityType>
+  <EntityType Name="ClientMaster">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="Client_Name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="BrandMasters" Relationship="Jaineelsql2012Model.FK_Brand_Master_Client_Master" FromRole="ClientMaster" ToRole="BrandMaster" />
+  </EntityType>
+  <EntityType Name="EstimateEdition">
+    <Key>
+      <PropertyRef Name="EST_EditionID" />
+    </Key>
+    <Property Name="EST_EditionID" Type="Int32" Nullable="false" />
+    <Property Name="EST_PUBID" Type="Int32" Nullable="false" />
+    <Property Name="EST_ID" Type="Int32" Nullable="false" />
+    <Property Name="Edition" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Weight" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Total_Size" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="NoOfInsertion" Type="Int32" Nullable="false" />
+    <Property Name="Total_Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Agency_Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Total_NetCost" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="EstimateHeader" Relationship="Jaineelsql2012Model.FK_Estimate_Edition_Estimate_Header" FromRole="EstimateEdition" ToRole="EstimateHeader" />
+  </EntityType>
+  <EntityType Name="EstimateHeader">
+    <Key>
+      <PropertyRef Name="EST_ID" />
+    </Key>
+    <Property Name="EST_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="EST_NO" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EST_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Campaign" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Agency" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PO_NO" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PO_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PeriodForm" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PeriodTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SAC_PER" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AAC_PER" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Gross_Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Net_Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="BrandID" Type="Int32" />
+    <NavigationProperty Name="EstimateEditions" Relationship="Jaineelsql2012Model.FK_Estimate_Edition_Estimate_Header" FromRole="EstimateHeader" ToRole="EstimateEdition" />
+    <NavigationProperty Name="EstimatePublications" Relationship="Jaineelsql2012Model.FK_Estimate_Publication_Estimate_Header" FromRole="EstimateHeader" ToRole="EstimatePublication" />
+  </EntityType>
+  <EntityType Name="EstimatePublication">
+    <Key>
+      <PropertyRef Name="EST_PUBID" />
+    </Key>
+    <Property Name="EST_PubIication" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="EST_PUBID" Type="Int32" Nullable="false" />
+    <Property Name="EST_ID" Type="Int32" Nullable="false" />
+    <Property Name="Pub_Language" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Total_Edition" Type="Int32" Nullable="false" />
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Total_Insertion" Type="Int32" Nullable="false" />
+    <Property Name="Total_Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Agency_Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Total_NetCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="EstimateHeader" Relationship="Jaineelsql2012Model.FK_Estimate_Publication_Estimate_Header" FromRole="EstimatePublication" ToRole="EstimateHeader" />
+  </EntityType>
+  <EntityType Name="EstimateScheduled">
+    <Key>
+      <PropertyRef Name="EST_SchID" />
+    </Key>
+    <Property Name="EST_SchID" Type="Int32" Nullable="false" />
+    <Property Name="EST_EditionID" Type="Int32" Nullable="false" />
+    <Property Name="EST_PUBID" Type="Int32" Nullable="false" />
+    <Property Name="EST_ID" Type="Int32" Nullable="false" />
+    <Property Name="Scheduled_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CaptionID" Type="Int32" Nullable="false" />
+    <Property Name="Language" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Hight" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Weight" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Total_Size" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="NoOfInsertion" Type="Int32" Nullable="false" />
+    <Property Name="Total_Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Agency_Discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Total_NetCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_Brand_Master_Client_Master">
+    <End Role="ClientMaster" Type="Jaineelsql2012Model.ClientMaster" Multiplicity="1" />
+    <End Role="BrandMaster" Type="Jaineelsql2012Model.BrandMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientMaster">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="BrandMaster">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Caption_Master_Brand_Master">
+    <End Role="BrandMaster" Type="Jaineelsql2012Model.BrandMaster" Multiplicity="1" />
+    <End Role="CaptionMaster" Type="Jaineelsql2012Model.CaptionMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandMaster">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="CaptionMaster">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estimate_Edition_Estimate_Header">
+    <End Role="EstimateHeader" Type="Jaineelsql2012Model.EstimateHeader" Multiplicity="1" />
+    <End Role="EstimateEdition" Type="Jaineelsql2012Model.EstimateEdition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstimateHeader">
+        <PropertyRef Name="EST_ID" />
+      </Principal>
+      <Dependent Role="EstimateEdition">
+        <PropertyRef Name="EST_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estimate_Publication_Estimate_Header">
+    <End Role="EstimateHeader" Type="Jaineelsql2012Model.EstimateHeader" Multiplicity="1" />
+    <End Role="EstimatePublication" Type="Jaineelsql2012Model.EstimatePublication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstimateHeader">
+        <PropertyRef Name="EST_ID" />
+      </Principal>
+      <Dependent Role="EstimatePublication">
+        <PropertyRef Name="EST_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

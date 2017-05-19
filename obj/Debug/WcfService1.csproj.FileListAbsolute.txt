@@ -1,0 +1,7 @@
+C:\Users\Jaineel\Documents\Visual Studio 2012\Projects\ResrMvcApp\WcfService1\bin\WcfService1.dll
+C:\Users\Jaineel\Documents\Visual Studio 2012\Projects\ResrMvcApp\WcfService1\bin\WcfService1.pdb
+C:\Users\Jaineel\Documents\Visual Studio 2012\Projects\ResrMvcApp\WcfService1\bin\EntityFramework.dll
+C:\Users\Jaineel\Documents\Visual Studio 2012\Projects\ResrMvcApp\WcfService1\bin\EntityFramework.xml
+C:\Users\Jaineel\Documents\Visual Studio 2012\Projects\ResrMvcApp\WcfService1\obj\Debug\WcfService1.csprojResolveAssemblyReference.cache
+C:\Users\Jaineel\Documents\Visual Studio 2012\Projects\ResrMvcApp\WcfService1\obj\Debug\WcfService1.dll
+C:\Users\Jaineel\Documents\Visual Studio 2012\Projects\ResrMvcApp\WcfService1\obj\Debug\WcfService1.pdb

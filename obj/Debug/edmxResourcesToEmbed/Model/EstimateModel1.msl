@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Jaineelsql2012ModelStoreContainer" CdmEntityContainer="Jaineelsql2012Entities1">
+    <EntitySetMapping Name="BrandMasters">
+      <EntityTypeMapping TypeName="Jaineelsql2012Model.BrandMaster">
+        <MappingFragment StoreEntitySet="BrandMaster">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="Brand_Name" ColumnName="Brand_Name" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CaptionMasters">
+      <EntityTypeMapping TypeName="Jaineelsql2012Model.CaptionMaster">
+        <MappingFragment StoreEntitySet="CaptionMaster">
+          <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientMasters">
+      <EntityTypeMapping TypeName="Jaineelsql2012Model.ClientMaster">
+        <MappingFragment StoreEntitySet="ClientMaster">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstimateEditions">
+      <EntityTypeMapping TypeName="Jaineelsql2012Model.EstimateEdition">
+        <MappingFragment StoreEntitySet="EstimateEdition">
+          <ScalarProperty Name="EST_EditionID" ColumnName="EST_EditionID" />
+          <ScalarProperty Name="EST_PUBID" ColumnName="EST_PUBID" />
+          <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+          <ScalarProperty Name="Edition" ColumnName="Edition" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Total_Size" ColumnName="Total_Size" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="NoOfInsertion" ColumnName="NoOfInsertion" />
+          <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+          <ScalarProperty Name="Agency_Discount" ColumnName="Agency_Discount" />
+          <ScalarProperty Name="Total_NetCost" ColumnName="Total_NetCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstimateHeaders">
+      <EntityTypeMapping TypeName="Jaineelsql2012Model.EstimateHeader">
+        <MappingFragment StoreEntitySet="EstimateHeader">
+          <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+          <ScalarProperty Name="EST_NO" ColumnName="EST_NO" />
+          <ScalarProperty Name="EST_Date" ColumnName="EST_Date" />
+          <ScalarProperty Name="Campaign" ColumnName="Campaign" />
+          <ScalarProperty Name="Agency" ColumnName="Agency" />
+          <ScalarProperty Name="PO_NO" ColumnName="PO_NO" />
+          <ScalarProperty Name="PO_Date" ColumnName="PO_Date" />
+          <ScalarProperty Name="PeriodForm" ColumnName="PeriodForm" />
+          <ScalarProperty Name="PeriodTo" ColumnName="PeriodTo" />
+          <ScalarProperty Name="SAC_PER" ColumnName="SAC_PER" />
+          <ScalarProperty Name="AAC_PER" ColumnName="AAC_PER" />
+          <ScalarProperty Name="Gross_Cost" ColumnName="Gross_Cost" />
+          <ScalarProperty Name="Net_Cost" ColumnName="Net_Cost" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstimatePublications">
+      <EntityTypeMapping TypeName="Jaineelsql2012Model.EstimatePublication">
+        <MappingFragment StoreEntitySet="EstimatePublication">
+          <ScalarProperty Name="EST_PubIication" ColumnName="EST_PubIication" />
+          <ScalarProperty Name="EST_PUBID" ColumnName="EST_PUBID" />
+          <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+          <ScalarProperty Name="Pub_Language" ColumnName="Pub_Language" />
+          <ScalarProperty Name="Total_Edition" ColumnName="Total_Edition" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Total_Insertion" ColumnName="Total_Insertion" />
+          <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+          <ScalarProperty Name="Agency_Discount" ColumnName="Agency_Discount" />
+          <ScalarProperty Name="Total_NetCost" ColumnName="Total_NetCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstimateScheduleds">
+      <EntityTypeMapping TypeName="Jaineelsql2012Model.EstimateScheduled">
+        <MappingFragment StoreEntitySet="EstimateScheduled">
+          <ScalarProperty Name="EST_SchID" ColumnName="EST_SchID" />
+          <ScalarProperty Name="EST_EditionID" ColumnName="EST_EditionID" />
+          <ScalarProperty Name="EST_PUBID" ColumnName="EST_PUBID" />
+          <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+          <ScalarProperty Name="Scheduled_Date" ColumnName="Scheduled_Date" />
+          <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Hight" ColumnName="Hight" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Total_Size" ColumnName="Total_Size" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="NoOfInsertion" ColumnName="NoOfInsertion" />
+          <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+          <ScalarProperty Name="Agency_Discount" ColumnName="Agency_Discount" />
+          <ScalarProperty Name="Total_NetCost" ColumnName="Total_NetCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_CreateEstimateProc" FunctionName="Jaineelsql2012Model.Store.sp_CreateEstimateProc" />
+    <FunctionImportMapping FunctionImportName="sp_GetBrandMaster" FunctionName="Jaineelsql2012Model.Store.sp_GetBrandMaster" />
+    <FunctionImportMapping FunctionImportName="sp_GetClientMaster" FunctionName="Jaineelsql2012Model.Store.sp_GetClientMaster" />
+  </EntityContainerMapping>
+</Mapping>
