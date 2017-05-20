@@ -120,7 +120,7 @@ namespace WcfService1
         {
             string connStr = ConfigurationManager.ConnectionStrings["Jaineelsql2012Entities1"].ConnectionString;
 
-            using (SqlConnection con = new SqlConnection("server=(local);database=test;integrated security=SSPI;"))
+            using (SqlConnection con = new SqlConnection(connStr))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_AddScheduling", con))
                 {
