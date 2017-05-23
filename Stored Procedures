@@ -1,0 +1,53 @@
+1> The stored procedure to schedule an edition
+
+USE [Jaineelsql2012]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Jaineel Vyas
+-- Create date: 17/05/2017
+-- Description:	To add schedule
+-- =============================================
+ALTER PROCEDURE [dbo].[sp_AddScheduling]
+
+@TotalCost decimal(18,2),
+	@AgDiscount decimal(18,2),
+	@NetCost decimal(18,2),
+	@NoOfInser int,
+	@Rate decimal(18,2),
+	@TotalSize decimal(18,2),
+	@Height decimal(18,2),
+	@Width decimal(18,2),
+	@Caption int,
+	@Language varchar(200),
+	@Scheduledate datetime,
+	@EstimateId int
+
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	BEGIN TRANSACTION;
+    SAVE TRANSACTION FirstSavePint;
+
+	BEGIN TRY
+	INSERT into [dbo].[EstimateScheduled] 
+	(EST_EditionID,EST_PUBID,EST_ID,Scheduled_Date,CaptionID,Language,Height,Widht,Total_Size,Rate,NoOfInsertion,Total_Cost,Agency_Discount,Total_NetCost) 
+	values ('1','1',@EstimateId,@Scheduledate,'1',@Language,@Height,@Width,@TotalSize,@Rate,@NoOfInser,@TotalCost,@AgDiscount,@NetCost);
+
+	END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+        BEGIN
+            ROLLBACK TRANSACTION FirstSavePint; -- rollback to Before Query Execution
+        END
+    END CATCH
+    COMMIT TRANSACTION 
+END;
