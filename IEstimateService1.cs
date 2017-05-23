@@ -53,3 +53,4 @@ namespace WcfService1
         bool AddScheduling(ScheduleDataContract Schedule);
     }
 }
+
