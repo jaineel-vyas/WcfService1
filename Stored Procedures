@@ -13,7 +13,7 @@ GO
 -- Create date: 17/05/2017
 -- Description:	To add schedule
 -- =============================================
-ALTER PROCEDURE [dbo].[sp_AddScheduling]
+CREATE PROCEDURE [dbo].[sp_AddScheduling]
 
 @TotalCost decimal(18,2),
 	@AgDiscount decimal(18,2),
